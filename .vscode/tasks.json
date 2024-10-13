@@ -4,16 +4,45 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "startup",
+            "dependsOn": [ "rasa", "node-red" ],
+            "group": {
+              "kind": "build",
+              "isDefault": true,
+            },
+          },
+        {
             "label": "node-red",
             "type": "shell",
-            "command": "node-red ",
+            "command": "cp flows.json ~/.node-red/flows.json &&  node-red -D editorTheme.tours=false -D editorTheme.projects.enabled=false -D notify.message='This environment will be terminated within 10 minutes. Please download your flow immediately.' -D notify.timer=13800000",
             "windows": {
-                "command": "node-red"
+                "command": "cp flows.json ~/.node-red/flows.json &&  node-red -D editorTheme.tours=false -D editorTheme.projects.enabled=false -D notify.message='This environment will be terminated within 10 minutes. Please download your flow immediately.' -D notify.timer=13800000"
             },
-            "group": "none",
+            "group": "build",
             "presentation": {
                 "reveal": "always",
-                "panel": "new"
+                "panel": "dedicated"
+            },
+            "runOptions": {
+                "runOn": "folderOpen"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "rasa",
+            "type": "process",
+            "command": "source .venv/bin/activate && spacy download en_core_web_md",
+            "windows": {
+                "command": "source .venv/bin/activate && spacy download en_core_web_md"
+            },
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
             },
             "runOptions": {
                 "runOn": "folderOpen"

@@ -23,24 +23,7 @@
 			"settings": {
 				"python.terminal.activateEnvInCurrentTerminal": true,
 				"python.defaultInterpreterPath": ".venv/bin/python"
-			},
-            "tasks": {
-                "version": "2.0.0",
-                "tasks": [
-                    {
-                        "label": "Running Node-RED",
-                        "type": "shell",
-                        "command": "node-red",
-                        "problemMatcher": [],
-                        "isBackground": false, // Optional: Node-RED can run in the background
-                        "presentation": {
-                            "reveal": "always",
-                            "panel": "dedicated" // Ensures Node-RED runs in a separate terminal
-                        }
-						
-                    }
-                ]
-            }
+			}    
 		}
 	},
 
