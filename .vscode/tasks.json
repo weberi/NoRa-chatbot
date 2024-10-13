@@ -4,16 +4,11 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "echo",
-            "type": "shell",
-            "command": "echo Hello"
-        },
-        {
             "label": "node-red",
             "type": "shell",
-            "command": "nod-red",
+            "command": "node-red ",
             "windows": {
-                "command": "npm start"
+                "command": "node-red"
             },
             "group": "none",
             "presentation": {
@@ -21,8 +16,9 @@
                 "panel": "new"
             },
             "runOptions": {
-                "runOn": "folderOpen",
-            }
+                "runOn": "folderOpen"
+            },
+            "problemMatcher": []
         }
     ]
 }
