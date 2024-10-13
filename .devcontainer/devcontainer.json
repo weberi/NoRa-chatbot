@@ -28,7 +28,7 @@
                 "version": "2.0.0",
                 "tasks": [
                     {
-                        "label": "Start Node-RED",
+                        "label": "Running Node-RED",
                         "type": "shell",
                         "command": "node-red",
                         "problemMatcher": [],
@@ -37,6 +37,7 @@
                             "reveal": "always",
                             "panel": "dedicated" // Ensures Node-RED runs in a separate terminal
                         }
+						
                     }
                 ]
             }
