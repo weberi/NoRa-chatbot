@@ -13,7 +13,7 @@
 	// "features": {},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [5005],
+	"forwardPorts": [5005, 1880],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"onCreateCommand": "pip install -U pip uv; uv venv --seed; source .venv/bin/activate; uv pip install rasa==3.6.20; uv pip install rasa[spacy]; ",
@@ -33,7 +33,7 @@
                         "type": "shell",
                         "command": "node-red",
                         "problemMatcher": [],
-                        "isBackground": true, // Optional: Node-RED can run in the background
+                        "isBackground": false, // Optional: Node-RED can run in the background
                         "presentation": {
                             "reveal": "always",
                             "panel": "dedicated" // Ensures Node-RED runs in a separate terminal
