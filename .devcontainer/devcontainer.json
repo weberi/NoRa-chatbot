@@ -1,32 +1,53 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
+// This line indicates the Docker image to be used for a Python development environment in a Dev Container setup, 
+// making development more consistent and easier to manage across different environments.
 {
-    "name": "Python 3",
-    "image": "mcr.microsoft.com/devcontainers/python:1-3.10-bullseye",
-    "features": {
-        "ghcr.io/va-h/devcontainers-features/uv:1": {}
-    },
+	"name": "Python 3",
+	"image": "mcr.microsoft.com/devcontainers/python:1-3.10-bullseye",
+	"features": {
+		"ghcr.io/va-h/devcontainers-features/uv:1": {}
+	},
+	
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
 
-    // Ports for both Rasa and Node-RED
-    "forwardPorts": [5005, 1880],
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [5005],
 
-    // Set up Rasa, Spacy, and the necessary models
-    "onCreateCommand": "pip install -U pip; uv venv --seed; source .venv/bin/activate; uv pip install rasa==3.6.20; uv pip install rasa[spacy]; spacy download en_core_web_md",
-
-    // Start Node-RED in a new terminal
-    "postStartCommand": "bash -c 'node-red'",
-
-    "customizations": {
-        "vscode": {
-            "settings": {
-                "python.terminal.activateEnvInCurrentTerminal": true,
-                "python.defaultInterpreterPath": ".venv/bin/python",
-                "terminal.integrated.shellArgs.linux": ["-l"]
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"onCreateCommand": "pip install -U pip uv; uv venv --seed; source .venv/bin/activate; uv pip install rasa==3.6.20; uv pip install rasa[spacy]; ",
+	"postCreateCommand": "spacy download en_core_web_md",
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"python.terminal.activateEnvInCurrentTerminal": true,
+				"python.defaultInterpreterPath": ".venv/bin/python"
+			},
+            "tasks": {
+                "version": "2.0.0",
+                "tasks": [
+                    {
+                        "label": "Start Node-RED",
+                        "type": "shell",
+                        "command": "node-red",
+                        "problemMatcher": [],
+                        "isBackground": true, // Optional: Node-RED can run in the background
+                        "presentation": {
+                            "reveal": "always",
+                            "panel": "dedicated" // Ensures Node-RED runs in a separate terminal
+                        }
+                    }
+                ]
             }
-        }
-    },
+		}
+	},
 
-    "remoteEnv": {
-        "MAX_NUMBER_OF_PREDICTIONS": "50"
-    },
+	"remoteEnv": {
+      "MAX_NUMBER_OF_PREDICTIONS": "50"
+   },
 
-    "remoteUser": "root"
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "root"
 }
