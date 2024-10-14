@@ -1,23 +1,21 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
     "version": "2.0.0",
     "tasks": [
         {
             "label": "startup",
-            "dependsOn": [ "rasa", "node-red" ],
+            "dependsOn": ["node-red", "rasa"],
             "group": {
-              "kind": "build",
-              "isDefault": true,
-            },
-          },
+                "kind": "build",
+                "isDefault": true
+            }
+        },
         {
             "label": "node-red",
             "type": "shell",
-            "command": "cp flows.json ~/.node-red/flows.json &&  node-red -D editorTheme.tours=false -D editorTheme.projects.enabled=false -D notify.message='This environment will be terminated within 10 minutes. Please download your flow immediately.' -D notify.timer=13800000",
+            "command": [ "npm start"],
             "windows": {
-                "command": "cp flows.json ~/.node-red/flows.json &&  node-red -D editorTheme.tours=false -D editorTheme.projects.enabled=false -D notify.message='This environment will be terminated within 10 minutes. Please download your flow immediately.' -D notify.timer=13800000"
-            },
+                "command": "npm start"
+                },
             "group": "build",
             "presentation": {
                 "reveal": "always",
@@ -30,19 +28,16 @@
         },
         {
             "label": "rasa",
-            "type": "process",
-            "command": "source .venv/bin/activate && spacy download en_core_web_md",
+            "type": "shell",
+            "command": [ "source .venv/bin/activate && spacy download en_core_web_md"],
             "windows": {
-                "command": "source .venv/bin/activate && spacy download en_core_web_md"
-            },
+                "command": "npm start"
+                },
             "group": "build",
             "presentation": {
-                "echo": true,
                 "reveal": "always",
-                "focus": true,
                 "panel": "shared",
-                "showReuseMessage": true,
-                "clear": false
+                "focus": true
             },
             "runOptions": {
                 "runOn": "folderOpen"

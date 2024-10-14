@@ -16,7 +16,7 @@
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"onCreateCommand": "npm install -g node-red; pip install -U pip uv; uv venv --seed; source .venv/bin/activate; uv pip install rasa==3.6.20; uv pip install rasa[spacy]; ",
-	"postCreateCommand": "postcreateCommand.sh",
+	"postCreateCommand": "spacy download en_core_web",
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {

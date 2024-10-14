@@ -1,0 +1,10 @@
+{
+    "scripts": {
+      "start": "node-red -D editorTheme.tours=false -D editorTheme.projects.enabled=false"
+    },
+    "dependencies": {
+      "node-red": "*",
+      "node-red-contrib-plugin-notify": "*",
+      "node-red-contrib-rasa-actionserver": "*"
+    }
+  }
