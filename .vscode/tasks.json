@@ -3,7 +3,7 @@
     "tasks": [
         {
             "label": "startup",
-            "dependsOn": ["node-red", "rasa"],
+            "dependsOn": ["node-red", "rasa-terminal"],
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -18,8 +18,9 @@
                 },
             "group": "build",
             "presentation": {
+                "echo": false,
                 "reveal": "always",
-                "panel": "dedicated"
+                "panel": "new"
             },
             "runOptions": {
                 "runOn": "folderOpen"
@@ -27,16 +28,17 @@
             "problemMatcher": []
         },
         {
-            "label": "rasa",
+            "label": "rasa-terminal",
             "type": "shell",
-            "command": [ "source .venv/bin/activate && spacy download en_core_web_md"],
+            "command": [ "source .venv/bin/activate; spacy download en_core_web_md;"  ],  
             "windows": {
-                "command": "npm start"
+                "command": ".venv/Scripts/activate.bat; spacy download en_core_web_md;"
                 },
             "group": "build",
             "presentation": {
+                "echo": false,
                 "reveal": "always",
-                "panel": "shared",
+                "panel": "dedicated",
                 "focus": true
             },
             "runOptions": {

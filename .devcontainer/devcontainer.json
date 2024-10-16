@@ -15,8 +15,11 @@
 	"forwardPorts": [5005, 1880],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"onCreateCommand": "npm install -g node-red; pip install -U pip uv; uv venv --seed; source .venv/bin/activate; uv pip install rasa==3.6.20; uv pip install rasa[spacy]; ",
-	"postCreateCommand": "spacy download en_core_web",
+
+	"onCreateCommand": "npm install node-red; npm install node-red-contrib-rasa-actionserver; pip install -U pip uv; uv venv --seed; source .venv/bin/activate; uv pip install rasa==3.6.20; uv pip install rasa[spacy] ",
+	"postCreateCommand": "source .venv/bin/activate; spacy download en_core_web_md;",
+	"postAttachCommand": "source .venv/bin/activate;",
+
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
