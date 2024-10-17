@@ -12,20 +12,20 @@ You can fork this repository and run the chatbot on your own Codespace!
 
 - a [GitHub Codespace](https://github.com/features/codespaces)
 - a Rasa OpenSource powered chatbot
-- an action server for the chatbot running on Node-RED and Rasa Node-RED nodes [node-red-contrib-rasa-actionserver](https://github.com/weberi/node-red-contrib-rasa-actionserver) 
+- an action server for the chatbot running on Node-RED using  [node-red-contrib-rasa-actionserver](https://github.com/weberi/node-red-contrib-rasa-actionserver) nodes
 
 ### Setup Instructions
 
 1. **Fork the Repository**: Click the fork button at the top right of this page.
-2. **Open in Codespace**: Once forked, start the repository's Codespace.
-3. **Start Rasa**: In the terminal, run the following command to start Rasa:
+2. **Open in Codespace**: Once forked, open the repository's Codespace in the browser. This may take up to 10 minutes.
+3. In the terminal of the Codespace: ```cd moodbot```, then type ```rasa train``` and hit Enter. When the training is complete:
+4. **Start Rasa**: In the terminal, run the following command to start Rasa:
 
    ```rasa run --port 5005 --cors "*"```
 
    ### Webchat Integration
 
 To enable users to chat with your bot via a web interface, you can use a webchat like [my_chatroom](https://weberi.github.io/my_chatroom.github.io). Follow these steps to integrate the chatroom with your bot running in the Codespace:
-
 
 
 1. **Expose Rasa Port**: After running the Rasa command in your Codespace (```rasa run --port 5005 --cors "*"````) and making port 5005 public, your Codespace will generate a public URL for your Rasa server. This URL should look something like:
