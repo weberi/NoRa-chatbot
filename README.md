@@ -23,24 +23,16 @@ You can fork this repository and run the chatbot on your own Codespace!
 
    ```rasa run --port 5005 --cors "*"```
 
-   ### Webchat Integration
+5. **Expose Rasa Port**: After starting the Rasa service, your Codespace will open port **5005** and provide a URL for your Rasa service in your Codespace. You can find this in the **Ports** tab. Change the port visibility from  *Private* to *Public*. The URL should look something like: ```https://your-codespace-url-5005.preview.app.github.dev```. Make sure to publish the URL for port **5005**. There will be a second port, **1880**, , which is used by your Node-RED action server and can remain *Private*.
 
-To enable users to chat with your bot via a web interface, you can use a webchat like [my_chatroom](https://weberi.github.io/my_chatroom.github.io). Follow these steps to integrate the chatroom with your bot running in the Codespace:
+Now, your bot is running, you can chat with it, e.g., via a chatroom.
 
 
-1. **Expose Rasa Port**: After running the Rasa command in your Codespace (```rasa run --port 5005 --cors "*"````) and making port 5005 public, your Codespace will generate a public URL for your Rasa server. This URL should look something like:
+### Talk with the bot in a Chatroom or WebChat
 
-```https://your-codespace-url-5005.preview.app.github.dev```
+You can create a local Chatroom as follows:
 
-2. **Create a Chatroom **: Clone the repo  [https://weberi.github.io/my_chatroom.github.io](https://weberi.github.io/my_chatroom.github.io) It will let you setup a web page showing a chatroom.
-
-3. **Configure the Chatroom**: Direct the webchat to communicate with your Rasa instance by providing this public URL to the chatroom's configuration. If you're using [my_chatroom](https://weberi.github.io/my_chatroom.github.io), you need to configure it to point to your Rasa instance’s URL.
-
-- Open the `index.html` file in the `my_chatroom` repository (or your equivalent webchat interface).
-- Find the part where it connects to the Rasa server. This is usually a script or configuration block that contains a URL. Replace the placeholder URL with the public URL of your Codespace's Rasa instance (the one from step 1).
-
-The configuration might look something like this:
-
+1. **Make a local Chatroom**: Copy the following code and save it as text file,  e.g., ```index.html```, on your local PC.
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +47,7 @@ The configuration might look something like this:
     <script src="https://cdn.statically.io/gh/weberi/chatroom/master/dist/Chatroom.js"></script>
     <script type="text/javascript">
     var chatroom = new window.Chatroom({
-        host: https://your-codespace-url-5005.preview.app.github.dev",   <!-- replace here !!!>
+        host: "https://your-codespace-url-5005.preview.app.github.dev",   
         title: "Chat with a bot",
         container: document.querySelector(".chat-container"),
         welcomeMessage: "Nice to meet you.",
@@ -67,6 +59,9 @@ The configuration might look something like this:
 </body>
 </html>
 ```
+2. **Configure the Chatroom**: Direct the chatroom to communicate with your Rasa service by providing this public URL to the chatroom's configuration. To do this,
+replace the placeholder URL in the ```host``` value with the public URL that you exposed in your Codespace (the one from step 5 above).  Ensure that the URL is enclosed in quotes, and remove any trailing  ```\``` if it appears.
+3. **Open the Chatroom**: Save the ```index.html``` again and open it in a browser.
 
 Now, start chatting with the bot!
 
