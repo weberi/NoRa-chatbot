@@ -2,6 +2,9 @@
 moodbot/.rasa/
 weatherbotplus/.rasa/
 testbot/.rasa/
+**/.rasa/
+*/models/
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
